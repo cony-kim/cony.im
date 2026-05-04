@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cony — Portfolio</title>
+    <meta name="description" content="코니의 포트폴리오 — 냠냠픽업, 김실장, ktds" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐰%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+      :root {
+        --bg: #fafaf9;
+        --surface: #ffffff;
+        --text: #18181b;
+        --text-muted: #71717a;
+        --border: #e4e4e7;
+        --accent: #18181b;
+        --accent-soft: #f4f4f5;
+        --radius: 14px;
+        --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 16px rgb(0 0 0 / 0.04);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0a0a0a;
+          --surface: #141414;
+          --text: #fafafa;
+          --text-muted: #a1a1aa;
+          --border: #27272a;
+          --accent: #fafafa;
+          --accent-soft: #1f1f22;
+          --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 16px rgb(0 0 0 / 0.3);
+        }
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        background: color-mix(in srgb, var(--bg) 80%, transparent);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 14px;
+        color: var(--text-muted);
+        transition: color 0.15s ease, background 0.15s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+        background: var(--accent-soft);
+      }
+
+      /* Hero */
+      .hero {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 96px 24px 64px;
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 6vw, 64px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin: 0 0 20px;
+      }
+
+      .hero p {
+        font-size: clamp(16px, 2vw, 19px);
+        color: var(--text-muted);
+        max-width: 620px;
+        margin: 0;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+      }
+
+      .badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 3px rgb(34 197 94 / 0.2);
+      }
+
+      /* Section */
+      section.work {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 24px 96px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 28px;
+      }
+
+      .section-title h2 {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      .section-title span {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 24px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+        min-height: 220px;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: color-mix(in srgb, var(--text) 25%, var(--border));
+      }
+
+      .card-emoji {
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      .card-title {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0;
+      }
+
+      .card-desc {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin: 0;
+        flex: 1;
+      }
+
+      .card-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .tag {
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--text-muted);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 32px 24px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      footer a {
+        color: var(--text);
+        border-bottom: 1px solid var(--border);
+      }
+
+      @media (max-width: 540px) {
+        .nav-links a { padding: 6px 10px; font-size: 13px; }
+        .hero { padding: 64px 24px 32px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <a href="#" class="logo">cony.im</a>
+        <div class="nav-links">
+          <a href="#nyamnyam">냠냠픽업</a>
+          <a href="#kimsiljang">김실장</a>
+          <a href="#ktds">ktds</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="badge">Available for new projects</span>
+        <h1>안녕하세요,<br />코니입니다.</h1>
+        <p>제품을 만들고 운영하며 배운 것들을 모아둔 공간입니다. 냠냠픽업, 김실장, ktds — 세 가지 프로젝트로 정리했어요.</p>
+      </section>
+
+      <section class="work">
+        <div class="section-title">
+          <h2>Selected Work</h2>
+          <span>2026</span>
+        </div>
+
+        <div class="grid">
+          <a href="#nyamnyam" class="card" id="nyamnyam">
+            <div class="card-emoji">🥡</div>
+            <h3 class="card-title">냠냠픽업</h3>
+            <p class="card-desc">픽업 주문 서비스. 자세한 내용은 곧 업데이트됩니다.</p>
+            <div class="card-meta">
+              <span class="tag">Service</span>
+              <span class="tag">F&amp;B</span>
+            </div>
+          </a>
+
+          <a href="#kimsiljang" class="card" id="kimsiljang">
+            <div class="card-emoji">💼</div>
+            <h3 class="card-title">김실장</h3>
+            <p class="card-desc">업무 자동화 및 운영 도구. 자세한 내용은 곧 업데이트됩니다.</p>
+            <div class="card-meta">
+              <span class="tag">Productivity</span>
+              <span class="tag">Tooling</span>
+            </div>
+          </a>
+
+          <a href="#ktds" class="card" id="ktds">
+            <div class="card-emoji">🏢</div>
+            <h3 class="card-title">ktds</h3>
+            <p class="card-desc">KT DS 관련 프로젝트. 자세한 내용은 곧 업데이트됩니다.</p>
+            <div class="card-meta">
+              <span class="tag">Enterprise</span>
+              <span class="tag">B2B</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Cony · <a href="mailto:hello@cony.im">hello@cony.im</a></p>
+    </footer>
+  </body>
+</html>
